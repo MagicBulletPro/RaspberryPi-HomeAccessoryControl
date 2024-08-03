@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Control</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1>Home Accessories</h1>
+    <div class="container">
+        <ul>
+            {% for accessory in accessories %}
+                <li class="{% if accessory.status %}on{% else %}off{% endif %}">
+                    <a href="{% url 'toggle_accessory' accessory.id %}">
+                        {{ accessory.name }} - {% if accessory.status %}On{% else %}Off{% endif %}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

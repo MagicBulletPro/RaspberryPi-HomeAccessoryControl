@@ -15,8 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from control import views
+from django.urls import path, include
 
 admin.site.site_header = "Smart-Home"
 admin.site.index_title = "Smart-Home"
@@ -24,6 +23,5 @@ admin.site.site_title = "Smart-Home Admin"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.accessory_list, name='accessory_list'),
-    path('toggle/<int:accessory_id>/', views.toggle_accessory, name='toggle_accessory'),
+    path('', include('control.urls')),
 ]
